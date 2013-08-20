@@ -10,6 +10,5 @@ public class SuWebView extends WebView {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
 
 }

@@ -37,14 +37,13 @@ public class MainActivity extends FragmentActivity {
 	 */
 	ViewPager mViewPager;
 
-//	ArrayList<Fragment> webViewList = new ArrayList<Fragment>();
+	ArrayList<Fragment> fragmentList = new ArrayList<Fragment>();
 	ArrayList<String> urls = new ArrayList<String>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		setUpFragments();
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
@@ -55,14 +54,6 @@ public class MainActivity extends FragmentActivity {
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 
-	}
-
-	private void setUpFragments() {
-		urls.add("http://sohu.com");
-
-		urls.add("http://163.com");
-
-		urls.add("http://baidu.com");
 	}
 
 	@Override
@@ -87,11 +78,11 @@ public class MainActivity extends FragmentActivity {
 //			 getItem is called to instantiate the fragment for the given page.
 //			 Return a DummySectionFragment (defined as a static inner class
 //			 below) with the page number as its lone argument.
-			 Fragment fragment = new DummySectionFragment();
-			 Bundle args = new Bundle();
-			 args.putString(DummySectionFragment.ARG_SECTION_NUMBER,
-						urls.get(position));
-			 fragment.setArguments(args);
+			Fragment fragment;
+			if(null != fragmentList || position >= fragmentList.size() || null == (fragment = fragmentList.get(position))){
+				fragment = new SuFragment();
+				fragmentList.add(position, fragment);
+			}
 			 return fragment;
 		}
 
@@ -116,47 +107,5 @@ public class MainActivity extends FragmentActivity {
 		}
 	}
 
-	/**
-	 * A dummy fragment representing a section of the app, but that simply
-	 * displays dummy text.
-	 */
-	public static class DummySectionFragment extends Fragment {
-		/**
-		 * The fragment argument representing the section number for this
-		 * fragment.
-		 */
-		public static final String ARG_SECTION_NUMBER = "section_number";
-
-		public DummySectionFragment() {
-		}
-
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main_dummy,
-					container, false);
-			// TextView dummyTextView = (TextView) rootView
-			// .findViewById(R.id.section_label);
-			// dummyTextView.setText(Integer.toString(getArguments().getInt(
-			// ARG_SECTION_NUMBER)));
-			WebView webView = (WebView) rootView.findViewById(R.id.webview);
-			webView.setWebViewClient(new WebViewClient(){
-				@Override
-				public boolean shouldOverrideUrlLoading(WebView view, String url) {
-					// TODO Auto-generated method stub
-					view.loadUrl(url);
-					return true;
-				}
-			});
-			webView.loadUrl(getArguments().getString(ARG_SECTION_NUMBER));
-			return rootView;
-		}
-
-
-		public void loadUrl() {
-			WebView webView = (WebView) getView().findViewById(R.id.webview);
-			webView.loadUrl(getArguments().getString(ARG_SECTION_NUMBER));
-			}
-	}
 
 }
