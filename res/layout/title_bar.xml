@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fullscreen_content_controls"
+    style="?buttonBarStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|center_horizontal"
+    android:background="@color/black_overlay"
+    android:orientation="horizontal" >
+
+    <AutoCompleteTextView
+        android:id="@+id/UrlText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="url" />
+
+
+    <Button
+        android:id="@+id/GoBtn"
+        style="?buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/dummy_button" />
+
+
+</LinearLayout>

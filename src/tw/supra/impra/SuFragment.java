@@ -12,11 +12,13 @@ import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 
 public class SuFragment extends Fragment {
-	
+
+	private SuWebView mWebView;
+
 	public SuFragment() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	/**
 	 * The fragment argument representing the section number for this fragment.
 	 */
@@ -26,21 +28,38 @@ public class SuFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		Context context = container.getContext();
-//		View rootView = inflater.inflate(R.layout.fragment_main_dummy,
-//				container, false);
-		LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-		ViewGroup rootView = new FrameLayout(context);
-		rootView.setLayoutParams(lp);
-		
+		// View rootView = inflater.inflate(R.layout.fragment_main_dummy,
+		// container, false);
+		LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT,
+				LayoutParams.MATCH_PARENT);
+		ViewGroup rootContainer = new FrameLayout(context);
+		rootContainer.setLayoutParams(lp);
+
 		// TextView dummyTextView = (TextView) rootView
 		// .findViewById(R.id.section_label);
 		// dummyTextView.setText(Integer.toString(getArguments().getInt(
 		// ARG_SECTION_NUMBER)));
-		SuWebView webView = new SuWebView(context);
-		webView.setWebViewClient(new SuWebViewClient());
-		webView.setLayoutParams(lp);
-		rootView.addView(webView);
-		return rootView;
+		mWebView = new SuWebView(context);
+		mWebView.setWebViewClient(new SuWebViewClient());
+		mWebView.setLayoutParams(lp);
+		rootContainer.addView(mWebView);
+		return rootContainer;
 	}
 
+	public SuWebView getWebView() {
+		return mWebView;
+	}
+
+	@Override
+	public ViewGroup getView() {
+		// TODO Auto-generated method stub
+		return (ViewGroup)super.getView();
+	}
+	
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		mWebView.loadUrl("http://sohu.com");
+	}
 }

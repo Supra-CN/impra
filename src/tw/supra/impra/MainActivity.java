@@ -1,24 +1,18 @@
 package tw.supra.impra;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
+import tw.supra.impra.controllers.TabsController;
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.TextView;
+import android.widget.FrameLayout;
 
 public class MainActivity extends FragmentActivity {
 
@@ -37,14 +31,15 @@ public class MainActivity extends FragmentActivity {
 	 */
 	ViewPager mViewPager;
 
-	ArrayList<Fragment> fragmentList = new ArrayList<Fragment>();
 	ArrayList<String> urls = new ArrayList<String>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		TabsController.getInstance().initialize(this);
 		setContentView(R.layout.activity_main);
-
+		FrameLayout controlpanel = (FrameLayout) findViewById(R.id.control_panel);
+		controlpanel.addView(new ActionBarCustomView(this));
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
@@ -53,6 +48,9 @@ public class MainActivity extends FragmentActivity {
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
+		TabsController.getInstance().addTab(1, "baidu.com");
+		mSectionsPagerAdapter.notifyDataSetChanged();
+		getActionBar().hide();
 
 	}
 
@@ -78,34 +76,35 @@ public class MainActivity extends FragmentActivity {
 //			 getItem is called to instantiate the fragment for the given page.
 //			 Return a DummySectionFragment (defined as a static inner class
 //			 below) with the page number as its lone argument.
-			Fragment fragment;
-			if(null != fragmentList || position >= fragmentList.size() || null == (fragment = fragmentList.get(position))){
-				fragment = new SuFragment();
-				fragmentList.add(position, fragment);
-			}
-			 return fragment;
+			 return TabsController.getInstance().getWebViewContainers().get(position);
 		}
 
 		@Override
 		public int getCount() {
 			// Show 3 total pages.
-			return 3;
+			return TabsController.getInstance().getWebViewContainers().size();
 		}
 
 		@Override
 		public CharSequence getPageTitle(int position) {
-			Locale l = Locale.getDefault();
-			switch (position) {
-			case 0:
-				return getString(R.string.title_section1).toUpperCase(l);
-			case 1:
-				return getString(R.string.title_section2).toUpperCase(l);
-			case 2:
-				return getString(R.string.title_section3).toUpperCase(l);
-			}
-			return null;
+//			Locale l = Locale.getDefault();
+//			switch (position) {
+//			case 0:
+//				return getString(R.string.title_section1).toUpperCase(l);
+//			case 1:
+//				return getString(R.string.title_section2).toUpperCase(l);
+//			case 2:
+//				return getString(R.string.title_section3).toUpperCase(l);
+//			}
+			return (getString(R.string.title_section) + position);
 		}
 	}
-
+	
+@Override
+protected void onResume() {
+	// TODO Auto-generated method stub
+	super.onResume();
+	
+}
 
 }
