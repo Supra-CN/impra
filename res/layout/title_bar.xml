@@ -8,19 +8,44 @@
     android:background="@color/black_overlay"
     android:orientation="horizontal" >
 
-    <AutoCompleteTextView
-        android:id="@+id/UrlText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:hint="url"
-        android:layout_marginLeft="15dp" />
-
-    <Button
+    <ImageButton
         android:id="@+id/GoBtn"
         style="?buttonBarButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dummy_button" />
+        android:src="@drawable/d_navigation_cancel" />
+
+    <TextView
+        android:id="@+id/UrlText"
+        style="?buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:singleLine="true"
+        android:text="http://www.url.com" />
+
+    <ImageButton
+        android:id="@+id/BackBtn"
+        style="?buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/d_navigation_back" />
+
+    <ImageButton
+        android:id="@+id/GoBtn"
+        style="?buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/l_tb_logo" />
+
+    <ImageButton
+        android:id="@+id/ForwardBtn"
+        style="?buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/d_navigation_forward" />
+
 
 </LinearLayout>
