@@ -3,14 +3,12 @@ package tw.supra.impra;
 import java.util.ArrayList;
 
 import tw.supra.impra.controllers.TabsController;
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
 import android.view.Menu;
 import android.widget.FrameLayout;
 

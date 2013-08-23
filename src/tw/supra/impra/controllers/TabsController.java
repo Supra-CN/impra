@@ -2,29 +2,19 @@ package tw.supra.impra.controllers;
 
 
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
 import tw.supra.impra.MainActivity;
-import tw.supra.impra.R;
 import tw.supra.impra.SuFragment;
-import tw.supra.impra.SuWebView;
 import android.content.Context;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.webkit.WebView;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageButton;
 
 	/**
 	 * Controller managing tabs.
@@ -154,13 +144,13 @@ import android.widget.ImageButton;
 //			RelativeLayout view = (RelativeLayout) mInflater.inflate(R.layout.webview, mWebViewsContainer, false);
 			SuFragment fragment = new SuFragment();
 //			final SuWebView webView = (SuWebView) view.findViewById(R.id.webview);
-			final SuWebView webView = fragment.getWebView();
-			View titleBar = mInflater.inflate(R.layout.title_bar, fragment.getView(), false);
+			final WebView webView = fragment.getWebView();
+//			View titleBar = mInflater.inflate(R.layout.title_bar, fragment.getView(), false);
 //			callSetEmbeddedTitleBar(webView, titleBar);
 			
-			final AutoCompleteTextView urlView = (AutoCompleteTextView) titleBar.findViewById(R.id.UrlText);
+//			final AutoCompleteTextView urlView = (AutoCompleteTextView) titleBar.findViewById(R.id.UrlText);
 			
-			int insertionIndex = addWebViewContainer(position, new SuFragment());
+			int insertionIndex = addWebViewContainer(position, fragment);
 			
 			Bundle args = new Bundle();
 			args.putString("url", url);
@@ -214,7 +204,7 @@ import android.widget.ImageButton;
 //				}
 //			});
 	        
-	        urlView.setCompoundDrawablePadding(5);
+//	        urlView.setCompoundDrawablePadding(5);
 	        
 //	        String[] from = new String[] { Browser.BookmarkColumns.TITLE, Browser.BookmarkColumns.URL };
 //	        int[] to = new int[] {R.id.AutocompleteTitle, R.id.AutocompleteUrl};

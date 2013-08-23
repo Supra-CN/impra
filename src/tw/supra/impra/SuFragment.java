@@ -1,19 +1,13 @@
 package tw.supra.impra;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.FrameLayout;
 
 public class SuFragment extends Fragment {
-
-	private SuWebView mWebView;
 
 	public SuFragment() {
 		// TODO Auto-generated constructor stub
@@ -24,42 +18,72 @@ public class SuFragment extends Fragment {
 	 */
 	public static final String ARG_SECTION_NUMBER = "section_number";
 
+	private WebView mWebView;
+	private boolean mIsWebViewAvailable;
+
+	/**
+	 * Called to instantiate the view. Creates and returns the WebView.
+	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		Context context = container.getContext();
-		// View rootView = inflater.inflate(R.layout.fragment_main_dummy,
-		// container, false);
-		LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT,
-				LayoutParams.MATCH_PARENT);
-		ViewGroup rootContainer = new FrameLayout(context);
-		rootContainer.setLayoutParams(lp);
-
-		// TextView dummyTextView = (TextView) rootView
-		// .findViewById(R.id.section_label);
-		// dummyTextView.setText(Integer.toString(getArguments().getInt(
-		// ARG_SECTION_NUMBER)));
-		mWebView = new SuWebView(context);
+		if (mWebView != null) {
+			mWebView.destroy();
+		}
+		mWebView = new WebView(getActivity());
 		mWebView.setWebViewClient(new SuWebViewClient());
-		mWebView.setLayoutParams(lp);
-		rootContainer.addView(mWebView);
-		return rootContainer;
-	}
-
-	public SuWebView getWebView() {
+		mIsWebViewAvailable = true;
 		return mWebView;
 	}
 
+	/**
+	 * Called when the fragment is visible to the user and actively running.
+	 * Resumes the WebView.
+	 */
 	@Override
-	public ViewGroup getView() {
-		// TODO Auto-generated method stub
-		return (ViewGroup)super.getView();
+	public void onPause() {
+		super.onPause();
+		mWebView.onPause();
 	}
-	
+
+	/**
+	 * Called when the fragment is no longer resumed. Pauses the WebView.
+	 */
 	@Override
 	public void onResume() {
-		// TODO Auto-generated method stub
+		mWebView.onResume();
 		super.onResume();
-		mWebView.loadUrl("http://sohu.com");
+		getWebView().loadUrl("http://sohu.com");
 	}
+
+	/**
+	 * Called when the WebView has been detached from the fragment. The WebView
+	 * is no longer available after this time.
+	 */
+	@Override
+	public void onDestroyView() {
+		mIsWebViewAvailable = false;
+		super.onDestroyView();
+	}
+
+	/**
+	 * Called when the fragment is no longer in use. Destroys the internal state
+	 * of the WebView.
+	 */
+	@Override
+	public void onDestroy() {
+		if (mWebView != null) {
+			mWebView.destroy();
+			mWebView = null;
+		}
+		super.onDestroy();
+	}
+
+	/**
+	 * Gets the WebView.
+	 */
+	public WebView getWebView() {
+		return mIsWebViewAvailable ? mWebView : null;
+	}
+
 }
