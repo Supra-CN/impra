@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fullscreen_content_controls"
-    style="?buttonBarStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom"
@@ -13,16 +12,16 @@
         android:id="@+id/GoBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@null"
+        android:background="@drawable/tb_btn_bg_selector"
         android:padding="@dimen/tb_btn_padding"
         android:src="@drawable/d_navigation_cancel" />
 
-    <TextView
+    <AutoCompleteTextView
         android:id="@+id/UrlText"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:background="@null"
+        android:background="@drawable/tb_btn_bg_selector"
         android:singleLine="true"
         android:textColor="@android:color/white"
         android:padding="@dimen/tb_btn_padding"
@@ -32,7 +31,7 @@
         android:id="@+id/BackBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@null"
+        android:background="@@drawable/tb_btn_bg_selector"
         android:padding="@dimen/tb_btn_padding"
         android:src="@drawable/d_navigation_back" />
 
@@ -40,14 +39,14 @@
         android:id="@+id/GoBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@null"
+        android:background="@@drawable/tb_btn_bg_selector"
         android:padding="@dimen/tb_btn_padding"
         android:src="@drawable/l_tb_logo" />
 
     <ImageButton
         android:id="@+id/ForwardBtn"
         android:layout_width="wrap_content"
-        android:background="@null"
+        android:background="@drawable/tb_btn_bg_selector"
         android:layout_height="wrap_content"
         android:padding="@dimen/tb_btn_padding"
         android:src="@drawable/d_navigation_forward" />

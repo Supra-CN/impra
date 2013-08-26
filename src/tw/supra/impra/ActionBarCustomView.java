@@ -8,6 +8,6 @@ public class ActionBarCustomView extends FrameLayout {
 
 	public ActionBarCustomView(Context context) {
 		super(context);
-		View.inflate(getContext(), R.layout.title_bar, this);
+		View.inflate(getContext(), R.layout.tool_bar, this);
 	}
 }
