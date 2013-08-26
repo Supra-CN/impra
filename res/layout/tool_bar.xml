@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fullscreen_content_controls"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/tb_height"
     android:layout_gravity="bottom"
     android:gravity="center"
     android:background="@color/black_overlay"
@@ -11,7 +11,7 @@
     <ImageButton
         android:id="@+id/GoBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@drawable/tb_btn_bg_selector"
         android:padding="@dimen/tb_btn_padding"
         android:src="@drawable/d_navigation_cancel" />
@@ -30,7 +30,7 @@
     <ImageButton
         android:id="@+id/BackBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@@drawable/tb_btn_bg_selector"
         android:padding="@dimen/tb_btn_padding"
         android:src="@drawable/d_navigation_back" />
@@ -38,16 +38,16 @@
     <ImageButton
         android:id="@+id/GoBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@@drawable/tb_btn_bg_selector"
         android:padding="@dimen/tb_btn_padding"
-        android:src="@drawable/l_tb_logo" />
+        android:src="@drawable/tb_btn_main_selector" />
 
     <ImageButton
         android:id="@+id/ForwardBtn"
         android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:background="@drawable/tb_btn_bg_selector"
-        android:layout_height="wrap_content"
         android:padding="@dimen/tb_btn_padding"
         android:src="@drawable/d_navigation_forward" />
 
