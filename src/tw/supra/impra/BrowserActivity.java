@@ -12,7 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.widget.FrameLayout;
 
-public class MainActivity extends FragmentActivity {
+public class BrowserActivity extends FragmentActivity {
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -37,7 +37,7 @@ public class MainActivity extends FragmentActivity {
 		TabsController.getInstance().initialize(this);
 		setContentView(R.layout.activity_main);
 		FrameLayout controlpanel = (FrameLayout) findViewById(R.id.control_panel);
-		controlpanel.addView(new ActionBarCustomView(this));
+		controlpanel.addView(new ToolBarView(this));
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
 		mSectionsPagerAdapter = new SectionsPagerAdapter(

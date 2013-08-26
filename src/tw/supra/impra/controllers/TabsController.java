@@ -5,7 +5,7 @@ package tw.supra.impra.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import tw.supra.impra.MainActivity;
+import tw.supra.impra.BrowserActivity;
 import tw.supra.impra.SuFragment;
 import android.content.Context;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -27,7 +27,7 @@ import android.webkit.WebView;
 		
 		private List<SuFragment> mWebViewList;
 		
-		private MainActivity mMainActivity;
+		private BrowserActivity mMainActivity;
 //		private ViewFlipper mWebViewsContainer;
 		private ViewGroup mWebViewsContainer;
 //		private OnTouchListener mTouchListener;
@@ -79,7 +79,7 @@ import android.webkit.WebView;
 		 * @param webViewContainer The main ViewFlipper, containing all the WebView.
 		 */
 //		public void initialize(MainActivity activity, OnTouchListener touchListener, ViewFlipper webViewContainer) {
-		public void initialize(MainActivity activity) {
+		public void initialize(BrowserActivity activity) {
 			mMainActivity = activity;		
 //			mWebViewsContainer = webViewContainer;
 //			mTouchListener = touchListener;
