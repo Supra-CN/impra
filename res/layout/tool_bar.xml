@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fullscreen_content_controls"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/tb_height"
+    android:layout_gravity="bottom"
+    android:gravity="center"
+    android:background="@color/black_overlay"
+    android:orientation="horizontal" >
+
+    <ImageButton
+        android:id="@+id/GoBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/tb_btn_bg_selector"
+        android:padding="@dimen/tb_btn_padding"
+        android:src="@drawable/d_navigation_cancel" />
+
+    <AutoCompleteTextView
+        android:id="@+id/UrlText"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/tb_btn_bg_selector"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        android:padding="@dimen/tb_btn_padding"
+        android:text="http://www.url.com" />
+
+    <ImageButton
+        android:id="@+id/BackBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@@drawable/tb_btn_bg_selector"
+        android:padding="@dimen/tb_btn_padding"
+        android:src="@drawable/d_navigation_back" />
+
+    <ImageButton
+        android:id="@+id/GoBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@@drawable/tb_btn_bg_selector"
+        android:padding="@dimen/tb_btn_padding"
+        android:src="@drawable/tb_btn_main_selector" />
+
+    <ImageButton
+        android:id="@+id/ForwardBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/tb_btn_bg_selector"
+        android:padding="@dimen/tb_btn_padding"
+        android:src="@drawable/d_navigation_forward" />
+
+</LinearLayout>
